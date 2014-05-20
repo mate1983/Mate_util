@@ -25,15 +25,16 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.SqlParameterValue;
 import org.springframework.jdbc.support.JdbcUtils;
 
-import com.besttone.zcx.util.security.SecurityContext;
-import com.besttone.zcx.util.security.SecurityContextManager;
-import com.besttone.zcx.util.security.SqlBrandLimit;
-import com.besttone.zcx.util.sql.MyBatisParameterToList;
-import com.besttone.zcx.util.sql.OraclePageController;
-import com.besttone.zcx.util.sql.OraclePageControllerSqlInjection;
-import com.besttone.zcx.util.sql.PageController;
-import com.besttone.zcx.util.sql.PageQueryResult;
-import com.besttone.zcx.util.sql.ResultSetMapBuilder;
+import com.easymesoft.util.paging.PageInfo;
+import com.easymesoft.util.security.SecurityContext;
+import com.easymesoft.util.security.SecurityContextManager;
+import com.easymesoft.util.security.SqlBrandLimit;
+import com.easymesoft.util.sql.MyBatisParameterToList;
+import com.easymesoft.util.sql.OraclePageController;
+import com.easymesoft.util.sql.OraclePageControllerSqlInjection;
+import com.easymesoft.util.sql.PageController;
+import com.easymesoft.util.sql.PageQueryResult;
+import com.easymesoft.util.sql.ResultSetMapBuilder;
 
 public class DaoUtil extends SqlSessionDaoSupport {
 	protected final static Log logger = LogFactory.getLog(DaoUtil.class);
@@ -192,8 +193,7 @@ public class DaoUtil extends SqlSessionDaoSupport {
 		final String idsql = getIdSql.getSql();
 
 		getJdbcTemplate().batchUpdate(sql, new BatchPreparedStatementSetter() {
-
-			@Override
+			
 			public void setValues(PreparedStatement ps, int i)
 					throws SQLException {
 				// TODO Auto-generated method stub
@@ -244,8 +244,7 @@ public class DaoUtil extends SqlSessionDaoSupport {
 				}
 
 			}
-
-			@Override
+			
 			public int getBatchSize() {
 				// TODO Auto-generated method stub
 				return paramsList.size();
